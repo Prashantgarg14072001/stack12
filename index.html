@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<form onsubmit="return validateForm()" style="margin-top: 50px; margin-left: 150px;">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+<br><br>
+  <label for="dob">Date of Birth:</label>
+  <input type="date" id="dob" name="dob" required>
+  <br><br>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+  <br><br>
+  <label for="phone">Phone Number:</label>
+  <input type="tel" id="phone" name="phone" required>
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+function validateForm() {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const dob = new Date(document.getElementById("dob").value);
+  const age = calculateAge(dob);
+
+  // Validate name
+  if (name.length < 2) {
+    alert("Please enter a valid name");
+    return false;
+  }
+
+  // Validate email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address");
+    return false;
+  }
+
+  // Validate age
+  if (age < 18) {
+    alert("You must be at least 18 years old to submit this form");
+    return false;
+  }
+
+  return true;
+}
+
+function calculateAge(dob) {
+  const today = new Date();
+  const diff = today.getTime() - dob.getTime();
+  const ageDate = new Date(diff);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+</script>
+
+</body>
+</html>

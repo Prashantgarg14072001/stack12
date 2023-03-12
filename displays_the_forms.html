@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Submitted Forms</title>
+  </head>
+  <body>
+    <h1>Submitted Forms</h1>
+    <ul>
+      <% forms.forEach((form) => { %>
+        <li>Name: <%= form.name %></li>
+        <li>Date of Birth: <%= form.dob.toDateString() %></li>
+        <li>Email: <%= form.email %></li>
+        <li>Phone Number: <%= form.phone</li>
+        </ul>
+    </body>
+    </html>
